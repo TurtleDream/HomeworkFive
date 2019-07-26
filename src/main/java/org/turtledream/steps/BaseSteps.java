@@ -3,8 +3,6 @@ package org.turtledream.steps;
 import cucumber.api.Scenario;
 import cucumber.api.java.After;
 import cucumber.api.java.Before;
-import io.qameta.allure.Allure;
-import io.qameta.allure.AllureLifecycle;
 import io.qameta.allure.Attachment;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
@@ -23,11 +21,11 @@ public class BaseSteps {
 
     @Before
     public void startScenario() {
-        WebDriver driver = DriverManager.getDriver();
-        driver.get(properties.getProperty("app.url"));
-        driver.manage().window().maximize();
-        driver.manage().timeouts().implicitlyWait(120, TimeUnit.SECONDS);
-        driver.manage().timeouts().pageLoadTimeout(120, TimeUnit.SECONDS);
+        WebDriver webDriver = DriverManager.getDriver();
+        webDriver.get(properties.getProperty("app.url"));
+        webDriver.manage().window().maximize();
+        webDriver.manage().timeouts().implicitlyWait(120, TimeUnit.SECONDS);
+        webDriver.manage().timeouts().pageLoadTimeout(120, TimeUnit.SECONDS);
     }
 
     @After
@@ -42,6 +40,4 @@ public class BaseSteps {
     public static byte[] takeScreenshot() {
         return ((TakesScreenshot) DriverManager.getDriver()).getScreenshotAs(OutputType.BYTES);
     }
-
-
 }
