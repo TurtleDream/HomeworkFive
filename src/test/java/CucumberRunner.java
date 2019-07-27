@@ -4,7 +4,6 @@ import org.junit.runner.RunWith;
 
 @RunWith(Cucumber.class)
 @CucumberOptions(features = {"src/test/resources/"}, glue = {"org.turtledream.steps"},
-        plugin = {"pretty",
-                "io.qameta.allure.cucumber4jvm.AllureCucumber4Jvm"})
+        plugin = {"pretty", "io.qameta.allure.cucumber4jvm.AllureCucumber4Jvm"})
 public class CucumberRunner {
 }

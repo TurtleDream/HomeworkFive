@@ -7,7 +7,6 @@ import io.qameta.allure.Attachment;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
-import org.turtledream.pages.BasePage;
 import org.turtledream.utils.DriverManager;
 import org.turtledream.utils.TestProperties;
 
@@ -15,17 +14,16 @@ import java.util.Properties;
 import java.util.concurrent.TimeUnit;
 
 public class BaseSteps {
-    public static Properties properties = TestProperties.getInstance().getProperties();
 
-    public static BasePage pageObject;
+    public static Properties properties = TestProperties.getInstance().getProperties();
 
     @Before
     public void startScenario() {
         WebDriver webDriver = DriverManager.getDriver();
         webDriver.get(properties.getProperty("app.url"));
         webDriver.manage().window().maximize();
-        webDriver.manage().timeouts().implicitlyWait(120, TimeUnit.SECONDS);
-        webDriver.manage().timeouts().pageLoadTimeout(120, TimeUnit.SECONDS);
+        webDriver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
+        webDriver.manage().timeouts().pageLoadTimeout(60, TimeUnit.SECONDS);
     }
 
     @After
